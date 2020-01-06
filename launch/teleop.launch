@@ -1,0 +1,17 @@
+<launch>
+  <!-- <rosparam command="load" file="$(find racecar_mn)/config/params.yaml" /> -->
+  
+  <include file="$(find ydlidar)/launch/lidar.launch" />
+  <node pkg="rosserial_python" type="serial_node.py" name="serial_node" args="/dev/ttyACM0">
+  </node>
+  <node pkg="joy" type="joy_node" name="joy_node" />
+  <!-- <node pkg="racecar_ws" name="teachable_machine" type="teachable_machine.py" output="screen" /> -->
+  <node pkg="racecar_ws" name="cmd_vel_mux" type="cmd_vel_mux.py" output="screen" />
+  <node pkg="racecar_ws" name="gamepad" type="gamepad.py" output="screen" />
+  <node pkg="racecar_ws" name="simple_camera" type="simple_camera.py" output="screen" />
+  <node pkg="racecar_ws" name="driveNode" type="driveNode.py" output="screen" />
+
+  <!-- Uncomment to enable by default -->
+  <!-- <node pkg="racecar_mn" name="simple_camera" type="simple_camera.py" /> -->
+
+</launch>
